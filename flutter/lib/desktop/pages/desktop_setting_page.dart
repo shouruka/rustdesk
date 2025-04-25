@@ -1979,7 +1979,7 @@ class __PrinterState extends State<_Printer> {
     final installed = bind.mainIsInstalled();
     // `is-printer-installed` may fail, but it's rare case.
     // Add additional error message here if it's really needed.
-    final isPrinterInstalled =
+    final driver_installed =
         bind.mainGetCommonSync(key: 'is-printer-installed') == 'true';
 
     final List<Widget> children = [];
@@ -1988,8 +1988,8 @@ class __PrinterState extends State<_Printer> {
     } else {
       children.addAll([
         if (!installed) tipClientNotInstalled(),
-        if (installed && !isPrinterInstalled) tipPrinterNotInstalled(),
-        if (installed && isPrinterInstalled) tipReady()
+        if (installed && !driver_installed) tipPrinterNotInstalled(),
+        if (installed && driver_installed) tipReady()
       ]);
     }
     return _Card(title: 'Outgoing Print Jobs', children: children);
