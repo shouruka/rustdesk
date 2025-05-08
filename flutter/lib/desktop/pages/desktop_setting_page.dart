@@ -64,6 +64,7 @@ class DesktopSettingPage extends StatefulWidget {
   final SettingsTabKey initialTabkey;
   static final List<SettingsTabKey> tabKeys = [
     SettingsTabKey.general,
+    /*
     if (!isWeb &&
         !bind.isOutgoingOnly() &&
         !bind.isDisableSettings() &&
@@ -72,11 +73,12 @@ class DesktopSettingPage extends StatefulWidget {
     if (!bind.isDisableSettings() &&
         bind.mainGetBuildinOption(key: kOptionHideNetworkSetting) != 'Y')
       SettingsTabKey.network,
+    */
     if (!bind.isIncomingOnly()) SettingsTabKey.display,
     if (!isWeb && !bind.isIncomingOnly() && bind.pluginFeatureIsEnabled())
       SettingsTabKey.plugin,
-    if (!bind.isDisableAccount()) SettingsTabKey.account,
-    if (isWindows && bind.mainGetBuildinOption(key: kOptionHideRemotePrinterSetting) != 'Y') SettingsTabKey.printer,
+    // if (!bind.isDisableAccount()) SettingsTabKey.account,
+    if (isWindows) SettingsTabKey.printer,
     SettingsTabKey.about,
   ];
 
